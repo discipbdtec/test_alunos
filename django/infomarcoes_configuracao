@@ -1,0 +1,9 @@
+sudo apt-get update
+sudo apt install python-django-common
+sudo apt-get install python-django
+django-admin startproject mysite
+password django:
+user:admin
+senha:moises123
+
+python manage.py createsuperuser
