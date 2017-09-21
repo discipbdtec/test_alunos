@@ -30,7 +30,7 @@ class Comentario(models.Model):
         return self.comentario_text
 # adicione linha no mysite/settings.py => 'noticias.apps.NoticiasConfig',        
 #apos conclusao do modulo execute: python manage.py makemigrations noticias
-#execute: ython manage.py sqlmigrate noticias 0001
+#execute: python manage.py sqlmigrate noticias 0001
 #execute: python manage.py migrate
 #no noticias/admin.py inclua a linha: admin.site.register(Noticia)
 #execute: python manage.py runserver

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mapa</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- NAO CONSEGUI CRIAR UM LINK CORRETAMENTE PARA CHAMAR O ARQUIVO MAPA.JS da pasta static. VER COMO FAZER ISTO PARA MODULARIZAR-->
+    
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+</head>
+
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div id="map" style="height: 600px; border: 1px solid #AAA;"></div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap Core JavaScript -->
+    
+<!-- NAO CONSEGUI CRIAR UM LINK CORRETAMENTE PARA CHAMAR O ARQUIVO MAPA.JS da pasta static. VER COMO FAZER ISTO PARA MODULARIZAR-->
+
+<script>var map;
+    // Inicializando o mapa do openstreetmap no index
+    function initmap()
+    {
+      map = new L.Map('map');
+    
+      // create the tile layer with correct attribution
+      var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      var osm = new L.TileLayer(osmUrl, {minZoom: 3, maxZoom: 30});
+      map.setView(new L.LatLng(-20.297618, -40.295777),12);
+      map.addLayer(osm);
+    }
+    function add_point(latitude,longitude,msg)
+    {
+    L.marker([latitude,longitude]).addTo(map)
+    .bindPopup('Mensagem.<br>'+msg+' .')
+    .openPopup();
+    }
+    </script>
+
+    
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <script type="text/javascript">
+        initmap();
+    </script>
+    {% if latest_question_list %}
+    <ul>
+    {% for noticias in latest_question_list %}
+    
+        <li><a><script>add_point({{noticias.latitude}}, {{noticias.longitude}},"{{noticias.noticia_text}}")</script></a></li>   
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+
+</body>
+
+</html>

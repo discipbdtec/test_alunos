@@ -7,3 +7,5 @@ user:admin
 senha:moises123
 
 python manage.py createsuperuser
+reference:https://docs.djangoproject.com/en/1.11/intro/tutorial03/
+https://docs.djangoproject.com/pt-br/1.11/howto/static-files/
